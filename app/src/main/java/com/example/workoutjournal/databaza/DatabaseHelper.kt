@@ -12,12 +12,12 @@ class DatabaseHelper private constructor(context: Context) {
         .addCallback(object : RoomDatabase.Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
-                // Metódy, ktoré sa majú vykonať pri vytvorení databázy
+
             }
 
             override fun onOpen(db: SupportSQLiteDatabase) {
                 super.onOpen(db)
-                // Metódy, ktoré sa majú vykonať pri otvorení databázy
+
             }
         })
         .build()
