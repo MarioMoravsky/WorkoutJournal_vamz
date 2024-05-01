@@ -15,6 +15,10 @@ class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
         }
     }
 
+    override fun getUserByUsername(username: String): UserEntity? {
+        return userDao.getUserByUsername(username)
+    }
+
     override suspend fun deleteUser(user: UserEntity) = userDao.delete(user)
 
     override suspend fun updateUser(user: UserEntity) = userDao.update(user)

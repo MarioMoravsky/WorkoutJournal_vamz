@@ -15,6 +15,8 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE id = :id")
     fun getUserById(id: Int): Flow<UserEntity?>
 
+    @Query("SELECT * FROM users WHERE name = :username LIMIT 1")
+    fun getUserByUsername(username: String): UserEntity?
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(user: UserEntity)
 

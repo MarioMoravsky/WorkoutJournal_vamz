@@ -8,4 +8,9 @@ interface UserRepository {
     suspend fun insertUser(user: UserEntity)
     suspend fun deleteUser(user: UserEntity)
     suspend fun updateUser(user: UserEntity)
+
+
+    fun getUserByUsername(username: String): UserEntity?
+
+
 }
