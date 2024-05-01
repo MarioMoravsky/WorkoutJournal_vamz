@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.workoutjournal.Authentication.LoginViewModel
+import com.example.workoutjournal.Authentication.RegisterViewModel
+import com.example.workoutjournal.databaza.DatabaseHelper
+import com.example.workoutjournal.databaza.UserRepositoryImpl
 import com.example.workoutjournal.ui.theme.WorkoutJournalTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,8 +25,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val viewModel = LoginViewModel()
-                    viewModel.LoginScreen(viewModel)
+                    val databaseHelper = DatabaseHelper.getInstance(this)
+                    val userRepository = UserRepositoryImpl(databaseHelper.userDao())
+                    val viewModel = RegisterViewModel(userRepository)
+                    viewModel.RegisterScreen()
+                    //val viewModel = LoginViewModel()
+                    //viewModel.LoginScreen(viewModel)
                     //Greeting("Android")
                 }
             }

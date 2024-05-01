@@ -7,7 +7,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 class DatabaseHelper private constructor(context: Context) {
     val db: AppDatabase = Room.databaseBuilder(
         context,
-        AppDatabase::class.java, "database-name"
+        AppDatabase::class.java, "WorkoutJournalDB"
     )
         .addCallback(object : RoomDatabase.Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) {
@@ -35,12 +35,9 @@ class DatabaseHelper private constructor(context: Context) {
         }
     }
 
-    // Metódy na manipuláciu s dátami
-    fun insertUser(user: UserEntity) {
-        db.userDao().insert(user)
-    }
 
-    fun getAllUsers(): List<UserEntity> {
-        return db.userDao().getAll()
+
+    fun userDao(): UserDao {
+        return db.userDao()
     }
 }
